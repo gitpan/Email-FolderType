@@ -2,7 +2,6 @@ Changes
 lib/Email/FolderType.pm
 MANIFEST
 Build.PL
-SIGNATURE
 META.yml
 t/01mbox.t
 t/02maildir.t

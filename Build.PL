@@ -7,6 +7,5 @@ Module::Build
          requires    => { 
 						  'Test::More' => 0,
                         },
-         sign => 1,
        )
   ->create_build_script;

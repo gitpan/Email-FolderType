@@ -7,12 +7,11 @@ require Exporter;
 @ISA       = qw(Exporter);
 @EXPORT_OK = qw(folder_type);
 
-$VERSION = '0.11';
-
+$VERSION = '0.2';
 
 =head1 NAME
 
-Email::FolderType - use heuristics to determine an email folder type
+Email::FolderType - return type of a mail folder
 
 =head1 SYNOPSIS
 
@@ -24,19 +23,19 @@ Email::FolderType - use heuristics to determine an email folder type
   print folder_type "some_mh/.";    # prints 'MH' 	
 
 
-=head1 METHODS
+=head1 SUBROUTINES
 
 =head2 folder_type <file path>
 
 Automatically detects what type of mail archive the 
-file path is and return the type.
+file path is and returns the name.
 
 =cut
 
 sub folder_type ($) 
 {
     my $folder = shift;
-	return undef     unless -e $folder;
+    return unless -e $folder;
     return "Maildir" if $folder =~ m{/$};
     return "MH"      if $folder =~ m{/\.$};
     return "Maildir" if -d $folder;
@@ -51,8 +50,6 @@ a given mail box.
 =head1 BUGS
 
 Currently only handles mbox and maildir
-
-Is generally not very good at the moment.
 
 =head1 AUTHOR
 
