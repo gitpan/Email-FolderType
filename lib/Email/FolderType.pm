@@ -7,12 +7,12 @@ require Exporter;
 @ISA       = qw(Exporter);
 @EXPORT_OK = qw(folder_type);
 
-$VERSION = '0.1';
+$VERSION = '0.11';
 
 
 =head1 NAME
 
-Email::Folder::DetectType - use heuristics to determine an email folder type
+Email::FolderType - use heuristics to determine an email folder type
 
 =head1 SYNOPSIS
 
