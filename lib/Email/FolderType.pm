@@ -7,7 +7,7 @@ require Exporter;
 @ISA       = qw(Exporter);
 @EXPORT_OK = qw(folder_type);
 
-$VERSION = '0.3';
+$VERSION = '0.4';
 
 =head1 NAME
 
