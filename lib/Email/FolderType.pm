@@ -1,12 +1,13 @@
-use strict;
 package Email::FolderType;
-use vars qw($VERSION @ISA @EXPORT_OK);
+# $Id: $
+use strict;
 
-require Exporter;
-@ISA       = qw(Exporter);
-@EXPORT_OK = qw(folder_type);
+use vars qw[$VERSION @REGISTER @EXPORT_OK];
+$VERSION   = '0.7';
+@EXPORT_OK = qw[folder_type];
 
-$VERSION = '0.6';
+use base qw[Exporter];
+use Email::FolderType::Local;
 
 =head1 NAME
 
@@ -14,7 +15,7 @@ Email::FolderType - determine the type of a mail folder
 
 =head1 SYNOPSIS
 
-  use Email::FolderType qw(folder_type);
+  use Email::FolderType qw[folder_type];
 
   print folder_type "~/mymbox";     # prints 'Mbox'
   print folder_type "~/a_maildir/"; # prints 'Maildir'
@@ -23,59 +24,60 @@ Email::FolderType - determine the type of a mail folder
 
 =head1 DESCRIPTION
 
-Provides a utility subroutine for detecting the type of a given mail
-folder.
+Provides a utility function for detecting the type of a given mail folder. Avaliable types
+are subject to the types that are registered. Determination of a type is subject to the
+return value of registered types. For more information on registered types please read
+L<Email::FolderType::Register>. L<Email::FolderType::Local|Email::FolderType::Local> is
+loaded by default.
 
-=head1 SUBROUTINES
+Because local types are always loaded first, they'll be tested last, in
+the reverse order they were registered. See
+L<Email::FolderType::Register|Email::FolderType::Register> for more
+details.
 
-=head2 folder_type <path>
+=head2 C<folder_type($folder)>
 
-Automatically detects what type of mail folder the path refers to and
-returns the name of that type.
+Automatically detects what type of mail folder is sent to it. Accepts one required
+parameter.
 
-It primarily bases the type on the suffix of the path given.
+This function will execute tests for each registered type and return the
+short name of the mail box. These names may corrispond to Perl modules
+in the C<Email::Folder::> namespace. For example, if Maildir is
+identified, that corresponds to
+L<Email::Folder::Maildir|Email::Folder::Maildir>.
 
-  Suffix | Type
- --------+---------
-  /      | Maildir
-  /.     | MH
-  //     | Ezmlm
-
-In case of no known suffix it checks for a known file structure.  If
-that doesn't work out it defaults to C<Mbox>.
+If no type is identified, C<undef> is returned.
 
 =cut
 
-sub folder_type ($) {
+sub folder_type($;) {
     my $folder = shift;
-
-    return "Ezmlm"   if $folder =~ m{//$};
-    return "Maildir" if $folder =~ m{/$};
-    return "MH"      if $folder =~ m{/\.$};
-    return "Maildir" if -d "$folder/cur";
-    return "Ezmlm"   if -d "$folder/archive";
-    # XXX return "MH" if -e WHAT?;
-    return "Mbox";
+    $_->{test}->($folder) and return $_->{name}
+      for @REGISTER;
+    return;
 }
 
 1;
+
 __END__
 
 =head1 AUTHOR
 
-Simon Wistow <simon@thegestalt.org>
+Casey West <casey@geeknest.com>, Simon Wistow <simon@thegestalt.org>.
 
-=head1 COPYING
+=head1 COPYRIGHT
 
-(C) Copyright 2003, Simon Wistow
+  (C) Copyright 2003, Simon Wistow
+  (C) Copyright 2004, Casey West
 
 Distributed under the same terms as Perl itself.
 
 This software is under no warranty and will probably ruin your life,
 kill your friends, burn your house and bring about the apocalypse.
 
+
 =head1 SEE ALSO
 
-L<Email::LocalDelivery>, L<Email::Folder>
+L<Email::LocalDelivery>, L<Email::Folder>.
 
 =cut

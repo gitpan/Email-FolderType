@@ -1,3 +1,7 @@
+0.7 Tuesday 4th May, 2004
+    rewrote distribution to include type registration so folder types can be
+    added at will by other module authors
+
 0.6 Friday 29th August, 2003
     added Ezmlm support (//) and rewrote the documentation
 
@@ -15,5 +19,3 @@
 
 0.1 Initial version
     Based on code by Simon Cozens in Email::LocalDelivery
-
-
