@@ -6,6 +6,7 @@ Makefile.PL
 META.yml
 t/01mbox.t
 t/02maildir.t
+t/03mh.t
 t/testmbox
 t/testmaildir/tmp/.exists
 t/testmaildir/cur/.exists

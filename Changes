@@ -1,3 +1,6 @@
+0.5 Monday 22nd July 2003
+    update the docs and other minor tweaks
+
 0.4 Sunday 11th May, 2003
     have Module::Build supply a Makefile.PL for classic CPAN.pm users
 

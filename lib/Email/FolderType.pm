@@ -7,7 +7,7 @@ require Exporter;
 @ISA       = qw(Exporter);
 @EXPORT_OK = qw(folder_type);
 
-$VERSION = '0.4';
+$VERSION = '0.5';
 
 =head1 NAME
 
@@ -48,7 +48,7 @@ a given mail box.
 
 =head1 BUGS
 
-Currently only handles mbox and maildir
+Currently only handles mh, mbox and maildir
 
 =head1 AUTHOR
 
