@@ -1,0 +1,15 @@
+--- #YAML:1.0
+name: Email-FolderType
+version: 0.1
+license: perl
+distribution_type: module
+requires:
+  Test::More: 0
+recommends: {}
+build_requires: {}
+conflicts: {}
+provides:
+  Email::FolderType:
+    file: lib/Email/FolderType.pm
+    version: 0.1
+generated_by: Module::Build version 0.18
