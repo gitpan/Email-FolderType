@@ -6,7 +6,6 @@ lib/Email/FolderType/Mbox.pm
 lib/Email/FolderType/MH.pm
 MANIFEST
 MANIFEST.SKIP
-Build.PL
 Makefile.PL
 META.yml
 t/00use.t
@@ -16,6 +15,7 @@ t/03mh.t
 t/10killeft.t
 t/15newmatcher.t
 t/16newdefault.t
+t/ezmlm.t
 t/testmbox
 t/testmaildir/tmp/.exists
 t/testmaildir/cur/.exists
