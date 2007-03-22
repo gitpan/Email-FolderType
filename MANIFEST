@@ -7,7 +7,6 @@ lib/Email/FolderType/MH.pm
 Makefile.PL
 MANIFEST
 MANIFEST.SKIP
-META.yml
 README
 t/00use.t
 t/01mbox.t
@@ -23,3 +22,5 @@ t/testmaildir/cur/.exists
 t/testmaildir/new/.exists
 t/testmaildir/tmp/.exists
 t/testmbox
+LICENSE
+META.yml                                 Module meta-data (added by MakeMaker)
