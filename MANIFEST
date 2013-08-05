@@ -1,13 +1,18 @@
 Changes
+LICENSE
+MANIFEST
+META.json
+META.yml
+Makefile.PL
+README
+dist.ini
 lib/Email/FolderType.pm
 lib/Email/FolderType/Ezmlm.pm
+lib/Email/FolderType/MH.pm
 lib/Email/FolderType/Maildir.pm
 lib/Email/FolderType/Mbox.pm
-lib/Email/FolderType/MH.pm
-Makefile.PL
-MANIFEST
-MANIFEST.SKIP
-README
+t/00-compile.t
+t/000-report-versions-tiny.t
 t/00use.t
 t/01mbox.t
 t/02maildir.t
@@ -16,11 +21,9 @@ t/10killeft.t
 t/15newmatcher.t
 t/16newdefault.t
 t/ezmlm.t
-t/pod-coverage.t
-t/pod.t
 t/testmaildir/cur/.exists
 t/testmaildir/new/.exists
 t/testmaildir/tmp/.exists
 t/testmbox
-LICENSE
-META.yml                                 Module meta-data (added by MakeMaker)
+xt/release/changes_has_content.t
+xt/release/pod-syntax.t
